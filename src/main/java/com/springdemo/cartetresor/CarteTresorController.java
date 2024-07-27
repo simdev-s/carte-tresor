@@ -8,6 +8,6 @@ public class CarteTresorController {
 
     @RequestMapping
     public String carteTresor(){
-        return "Bienvenue dans le projet de la carte au trésor, Simon !";
+        return "Bienvenue dans le projet de la carte au trésor, Simon ! :)";
     }
 }
