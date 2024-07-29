@@ -1,9 +1,11 @@
 C - 3 - 4
-M - 1 - 1
+M - 1 - 2
+M - 2 - 1
 M - 2 - 2
+M - 3 - 4
 M - 3 - 3
-T - 0 - 1 - 2
+T - 0 - 1 - 1
 T - 1 - 2 - 3
 T - 2 - 3 - 4
-A - Lara - 1 - 1 - S - AADADAGGA
-A - Indiana - 2 - 2 - S - AADADA
+A - Lara - 1 - 2 - S - 120131
+A - Indiana - 3 - 4 - N - 211
