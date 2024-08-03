@@ -63,6 +63,7 @@ public class CarteTresorApplication {
 
 		// 👍 Récupération des données du fichier d'entrée pour réécriture tronquée dans le fichier de sortie
 		System.out.println(" ");
+		System.out.println("|||||||| DÉBUT ||||||||");
 		System.out.println("------ Affichage ligne par ligne pour les trésors et les aventuriers au DÉBUT------");
 		for (String line : contentInputSplit) {
 			// 👍 Réupération du type de ligne
@@ -162,7 +163,6 @@ public class CarteTresorApplication {
 
 				initCarteNomAvent[aventVerticArray.get(i)][aventHorizArray.get(i)]=nomAventArray.get(i);
 				initOrientationNomAvent[aventVerticArray.get(i)][aventHorizArray.get(i)]=orientationAventArray.get(i);
-				initCarteNbresorsRamassesAvent[aventVerticArray.get(i)][aventHorizArray.get(i)]=nbTresorsRamassesAventArray.get(i);
 			}
 
 		/// 👍 ------ Affichage de diverses cartes au DÉBUT ------
@@ -194,9 +194,7 @@ public class CarteTresorApplication {
 
 		// 👍 Récupération des données du fichier d'entrée pour réécriture tronquée dans le fichier de sortie
 		System.out.println(" ");
-		System.out.println("------ Affichage ligne par ligne pour les trésors et les aventuriers à la FIN ------");
-		numeroTresor = 0;
-		numeroAventurier = 0;
+		System.out.println("|||||||| FIN ||||||||");
 		for (String line : contentInputSplit) {
 			// 👍 Réupération du type de ligne
 			String typeLigne=String.valueOf(line.charAt(0));
@@ -225,11 +223,6 @@ public class CarteTresorApplication {
 
 			// 🔥 Cas de la ligne 'Trésor'
 			if(typeLigne.equals("T")){
-				// Renseignement du numéro du trésor
-				numeroTresor++;
-				// Affichage des données du fichier de départ pour chaque trésor
-				System.out.println("◉ TRÉSOR " + numeroTresor + " fin |" + " Nb trésors restants fin : " + contentLineSplit[6]);
-
 				// Définition des données variables de sortie pour chaque trésor
 				tresor.tresorHoriz = Integer.parseInt(contentLineSplit[2]);
 				tresorHorizArray.add(tresor.tresorHoriz);
@@ -264,14 +257,7 @@ public class CarteTresorApplication {
 
 				aventurier.seqMvt = contentLineSplit[10];
 
-				nbTresorsRamassesAventArray.add(0);
-
-				// Renseignement du numéro de l'aventurier
-				numeroAventurier++;
-				// Affichage des données du fichier de départ pour chaque aventurier
-				System.out.println("◉ AVENT. " + numeroAventurier + " fin |" + " Pos. horiz. avent. fin  : " + contentLineSplit[4] + " | Pos. verti. avent. "
-						+ "fin : " + contentLineSplit[6] + " | Orientation fin : " + contentLineSplit[8]
-						+ " | Séquence de mouvement full : " + contentLineSplit[10]);
+				nbTresorsRamassesAventArray.add(2);
 
 				// Écriture du fichier de sortie pour chaque aventurier
 				for (int i = 0; i < 4; i++) {
@@ -281,34 +267,32 @@ public class CarteTresorApplication {
 			}
 		}
 
-		// ℹ Fermeture possible du 'bufferedWriter'
+		// 👍 Fermeture du 'bufferedWriter'
+		bufferedWriter.close ();
 
-		// 👍 Initialisation et remplissage des diverses cartes
-		// 👍 Carte
+		// 👍 Remplissage des diverses cartes
+			// 👍 Montagne
+			for(int i = 0; i < montagneVerticArray.size(); i++) {
+				initCarte[montagneVerticArray.get(i)][montagneHorizArray.get(i)]="M";
+			}
 
-		// 👍 Montagne
-		for(int i = 0; i < montagneVerticArray.size(); i++) {
-			initCarte[montagneVerticArray.get(i)][montagneHorizArray.get(i)]="M";
-		}
+			// 👍 Trésor
+			for(int i = 0; i < tresorVerticArray.size(); i++) {
+				initCarte[tresorVerticArray.get(i)][tresorHorizArray.get(i)]="T";
 
-		// 🔥 Trésor
-		for(int i = 0; i < tresorVerticArray.size(); i++) {
-			initCarte[tresorVerticArray.get(i)][tresorHorizArray.get(i)]="T";
+				initCarteNbTres[tresorVerticArray.get(i)][tresorHorizArray.get(i)]=nbTresorsArray.get(i);
+			}
 
-			initCarteNbTres[tresorVerticArray.get(i)][tresorHorizArray.get(i)]=nbTresorsArray.get(i);
-		}
+			// 👍 Aventurier
+			for(int i = 0; i < aventVerticArray.size(); i++) {
+				initCarte[aventVerticArray.get(i)][aventHorizArray.get(i)]="A";
 
-		// 🔥 Aventurier
-		for(int i = 0; i < aventVerticArray.size(); i++) {
-			initCarte[aventVerticArray.get(i)][aventHorizArray.get(i)]="A";
-
-			initCarteNomAvent[aventVerticArray.get(i)][aventHorizArray.get(i)]=nomAventArray.get(i);
-			initOrientationNomAvent[aventVerticArray.get(i)][aventHorizArray.get(i)]=orientationAventArray.get(i);
-			initCarteNbresorsRamassesAvent[aventVerticArray.get(i)][aventHorizArray.get(i)]=nbTresorsRamassesAventArray.get(i);
-		}
+				initCarteNomAvent[aventVerticArray.get(i)][aventHorizArray.get(i)]=nomAventArray.get(i);
+				initOrientationNomAvent[aventVerticArray.get(i)][aventHorizArray.get(i)]=orientationAventArray.get(i);
+				initCarteNbresorsRamassesAvent[aventVerticArray.get(i)][aventHorizArray.get(i)]=nbTresorsRamassesAventArray.get(i);
+			}
 
 		/// 👍 ------ Affichage de diverses cartes à la FIN ------
-			System.out.println(" ");
 			System.out.println("------ Cartes diverses à la FIN ------");
 
 			// 👍 Carte globale
@@ -337,8 +321,5 @@ public class CarteTresorApplication {
 			System.out.println("** Carte avec nb de trésors des aventuriers FIN **");
 			System.out.println(Arrays.deepToString(initCarteNbresorsRamassesAvent).replace("],", "],\n")
 					.replace("0", "•"));
-
-		// 👍 Fermeture du 'bufferedWriter'
-		bufferedWriter.close ();
 	}
 }
