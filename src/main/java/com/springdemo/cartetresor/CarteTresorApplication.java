@@ -16,9 +16,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Objects;
 
-import static java.lang.Integer.parseInt;
-import static java.lang.Integer.sum;
-
 @SpringBootApplication
 public class CarteTresorApplication {
 
